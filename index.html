@@ -125,39 +125,44 @@
 
   <section class="wishlist">
     <div class="item">
-      <div class="checkbox"></div>
+      <input type="checkbox" class="wish-check" aria-label="Markeer dit item als voltooid">
       <div>
         <h3><a href="https://vandezotte.nl/collections/vendors?q=Van%20De%20Zotte" target="_blank">De staaltjekit van Van De Zotte Parfum</a></h3>
       </div>
     </div>
 
     <div class="item">
-      <div class="checkbox"></div>
+      <input type="checkbox" class="wish-check" aria-label="Markeer dit item als voltooid">
       <div>
         <h3>Pralines van Leonidas, Lindt of Neuhaus (liefst donkere of melk chocolade)</h3>
       </div>
     </div>
 
     <div class="item">
-      <div class="checkbox"></div>
+      <input type="checkbox" class="wish-check" aria-label="Markeer dit item als voltooid">
       <div>
         <h3>Een reep chocolade van Tony's Chocoloney's</h3>
       </div>
     </div>
 
     <div class="item">
-      <div class="checkbox"></div>
+      <input type="checkbox" class="wish-check" aria-label="Markeer dit item als voltooid">
       <div>
         <h3>Honing van een imker</h3>
       </div>
     </div>
 
     <div class="item">
-      <div class="checkbox"></div>
+      <input type="checkbox" class="wish-check" aria-label="Markeer dit item als voltooid">
       <div>
         <h3>Cadeaubon voor:</h3>
         <div class="sublist">
-          <div>• Supra Bazar</div>
+          <label><input type="checkbox"> Supra Bazar</label>
+          <label><input type="checkbox"> <a href="https://www.lush.com/nl/nl/" target="_blank">Lush</a></label>
+          <label><input type="checkbox"> <a href="https://wondr.care" target="_blank">Wondr</a></label>
+          <label><input type="checkbox"> Veritas</label>
+          <label><input type="checkbox"> Kinepolis</label>
+        </div>
           <div>• <a href="https://www.lush.com/nl/nl/" target="_blank">Lush</a></div>
           <div>• <a href="https://wondr.care" target="_blank">Wondr</a></div>
           <div>• Veritas</div>
@@ -170,12 +175,16 @@
   <footer>
     <div>Warme wintergroetjes 🎄</div>
     <div style="font-size:12px">Versie: <span id="version">1</span></div>
-  </footer>
+    <div style="margin-top:20px; text-align:center;">
+    <button onclick="window.print()" style="padding:10px 16px; border-radius:10px; border:0; background:var(--winter-blue); color:white; font-weight:600; cursor:pointer;">Deze pagina printen</button>
+  </div>
+
+</footer>
 </div>
 
 <script>
-  const GITHUB_OWNER = "AmaaniL";
-  const GITHUB_REPO  = "Wenslijst";
+  const GITHUB_OWNER = "YOUR_GITHUB_USERNAME";
+  const GITHUB_REPO  = "YOUR_REPO_NAME";
   const FILE_PATH    = "index.html";
 
   function formatDate(iso){
@@ -222,6 +231,22 @@
   }
 
   setDate();
+  // Accessibility + LocalStorage persistence for checkboxes
+  document.addEventListener('DOMContentLoaded', () => {
+    const boxes = document.querySelectorAll('.wish-check, .sublist input[type="checkbox"]');
+    boxes.forEach((box, i) => {
+      const saved = localStorage.getItem('wish-check-' + i);
+      if(saved === 'true') box.checked = true;
+      box.addEventListener('change', () => {
+        localStorage.setItem('wish-check-' + i, box.checked);
+      });
+      box.setAttribute('role', 'checkbox');
+      box.setAttribute('aria-checked', box.checked);
+      box.addEventListener('change', () => {
+        box.setAttribute('aria-checked', box.checked);
+      });
+    });
+  });
 </script>
 
 </body>
