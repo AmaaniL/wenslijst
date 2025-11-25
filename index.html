@@ -1,44 +1,44 @@
 <!doctype html>
-<html lang="en">
+<html lang="nl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>My Christmas Wishlist</title>
+  <title>Kerstverlanglijstje</title>
 
-  <!-- Google font (free, fast) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#0f1724;
-      --card:#0b1220;
-      --accent:#8be9fd;
-      --muted:#9aa4b2;
-      --glass: rgba(255,255,255,0.03);
-      --radius:14px;
+      --bg: #f4f1ee;
+      --card: #ffffff;
+      --accent: #b4363d;
+      --accent-soft: #c85e64;
+      --text: #3b3b3b;
+      --muted: #6a6a6a;
+      --radius: 14px;
+      --winter-blue: #6aa8c7;
+      --winter-blue-soft: #b7d7e8;
     }
     html,body{height:100%}
     body{
       margin:0;
-      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      background: linear-gradient(180deg,#071027 0%, #071c2a 100%);
-      color:#e6eef6;
+      font-family:"Nunito", sans-serif;
+      background: linear-gradient(180deg, #e6edf2 0%, #f6f3f0 100%);
+      color:var(--text);
       -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+      padding:28px;
       display:flex;
-      align-items:center;
       justify-content:center;
-      padding:32px;
     }
 
     .container{
       width:100%;
       max-width:900px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:20px;
+      background:var(--card);
+      border-radius:var(--radius);
       padding:28px;
-      box-shadow: 0 10px 30px rgba(2,6,23,0.7);
-      border: 1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      border:1px solid rgba(0,0,0,0.05);
     }
 
     header{
@@ -48,234 +48,181 @@
       margin-bottom:20px;
     }
     .logo{
-      width:68px;height:68px;border-radius:14px;
-      background: linear-gradient(135deg, #06364e, #073b2f);
-      display:flex;align-items:center;justify-content:center;
-      font-weight:700;color:var(--accent);font-size:20px;
-      box-shadow: 0 6px 18px rgba(3,10,31,0.6);
+      width:70px; height:70px;
+      border-radius:18px;
+      background: linear-gradient(135deg, var(--winter-blue), var(--winter-blue-soft));
+      display:flex; align-items:center; justify-content:center;
+      font-size:28px; color:white; font-weight:700;
+      box-shadow:0 4px 14px rgba(0,0,0,0.1);
     }
-    h1{margin:0;font-size:20px}
-    p.lead{margin:0;color:var(--muted);font-size:13px}
+
+    h1{margin:0;font-size:26px;color:var(--accent)}
+    p.lead{margin:0;color:var(--muted);font-size:14px}
 
     .meta{
       margin-left:auto;
       text-align:right;
-      font-size:13px;color:var(--muted);
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr 320px;
-      gap:20px;
-      align-items:start;
-    }
-
-    .card{
-      background:var(--card);
-      border-radius:var(--radius);
-      padding:18px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
-      border:1px solid rgba(255,255,255,0.03);
+      font-size:13px; color:var(--muted);
     }
 
     .wishlist{
       display:flex;
       flex-direction:column;
-      gap:12px;
+      gap:14px;
+      margin-top:10px;
     }
 
     .item{
-      display:flex;gap:12px;align-items:center;
-      background:var(--glass);padding:12px;border-radius:12px;
-      border:1px solid rgba(255,255,255,0.02);
+      background:#fafafa;
+      border-radius:var(--radius);
+      padding:14px 16px;
+      border:1px solid rgba(0,0,0,0.05);
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
     }
-    .item .left{
-      width:44px;height:44px;border-radius:10px;background:linear-gradient(180deg,#0a2b38,#07313b);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);
+    .checkbox{
+      width:22px; height:22px;
+      border-radius:6px;
+      border:2px solid var(--winter-blue);
+      display:flex; align-items:center; justify-content:center;
+      font-size:14px; color:var(--winter-blue);
     }
-    .item h3{margin:0;font-size:15px}
-    .item p{margin:0;color:var(--muted);font-size:13px}
-
-    .notes{font-size:13px;color:var(--muted);margin-top:8px}
-
-    .cta{
-      display:flex;gap:10px;margin-top:14px;
-    }
-    .btn{
-      padding:8px 12px;border-radius:10px;border:0;cursor:pointer;font-weight:600;
-      background:linear-gradient(90deg,#064e6b,#036a5b);color:white;
-    }
-    .btn.ghost{
-      background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--accent);
+    .item h3{
+      margin:0;font-size:16px;color:var(--text);
     }
 
-    footer{margin-top:18px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;align-items:center}
+    .sublist{
+      margin-top:8px;
+      padding-left:20px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
 
-    /* responsive */
-    @media (max-width:880px){
-      .grid{grid-template-columns:1fr; }
-      .meta{text-align:left;margin-top:8px}
+    footer{
+      margin-top:20px;
+      font-size:13px;
+      color:var(--muted);
+      display:flex;
+      justify-content:space-between;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="logo">X🎄</div>
+<div class="container">
+  <header>
+    <div class="logo">❄️</div>
+    <div>
+      <h1>Mijn Kerstverlanglijstje</h1>
+      <p class="lead">Een warme, winterse wensenlijst ✨</p>
+    </div>
+    <div class="meta">
+      <div id="last-edited">Laatst bewerkt: —</div>
+      <div id="source-note" style="font-size:12px">Bron: Git commit / fallback</div>
+    </div>
+  </header>
+
+  <section class="wishlist">
+    <div class="item">
+      <div class="checkbox"></div>
       <div>
-        <h1>My Christmas Wishlist</h1>
-        <p class="lead">A small, shareable wishlist — updated automatically with the last Git commit date.</p>
+        <h3><a href="https://vandezotte.nl/collections/vendors?q=Van%20De%20Zotte" target="_blank">De staaltjekit van Van De Zotte Parfum</a></h3>
       </div>
-
-      <div class="meta">
-        <div id="last-edited">Last edited: —</div>
-        <div id="source-note" style="font-size:12px;color:var(--muted)">Source: Git commit / fallback</div>
-      </div>
-    </header>
-
-    <div class="grid">
-      <main class="card">
-        <section class="wishlist">
-          <!-- Example items — edit or replace these -->
-          <div class="item">
-            <div class="left">01</div>
-            <div class="body">
-              <h3>Noise-cancelling headphones</h3>
-              <p>Comfortable, long battery life — prefer black or dark green.</p>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="left">02</div>
-            <div class="body">
-              <h3>Cozy knit sweater</h3>
-              <p>Size M, fair isle pattern — warm and soft.</p>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="left">03</div>
-            <div class="body">
-              <h3>Board game: cooperative</h3>
-              <p>Prefer a cooperative board game for 2–4 players.</p>
-            </div>
-          </div>
-
-          <div class="notes card" style="margin-top:6px;">
-            <strong>Notes:</strong>
-            <div style="margin-top:6px;color:var(--muted)">If you'd like to gift something, message me — I'll update availability/links here.</div>
-          </div>
-
-          <div class="cta">
-            <button class="btn" onclick="copyLink()">Copy share link</button>
-            <button class="btn ghost" onclick="downloadPDF()">Download (simple)</button>
-          </div>
-        </section>
-      </main>
-
-      <aside class="card">
-        <h3 style="margin-top:0">How to use</h3>
-        <p style="color:var(--muted);font-size:13px">Edit this file in your repository to change the wishlist. The page will show the latest commit date if published to GitHub Pages (public repo).</p>
-
-        <hr style="opacity:0.06;margin:12px 0">
-
-        <div style="font-size:13px;color:var(--muted)">
-          <strong>Share:</strong>
-          <div style="margin-top:8px">Post the GitHub Pages link or copy the link above.</div>
-        </div>
-      </aside>
     </div>
 
-    <footer>
-      <div>Made with ❤️ — happy holidays</div>
-      <div style="font-size:12px;color:var(--muted)">Page version: <span id="version">1</span></div>
-    </footer>
-  </div>
+    <div class="item">
+      <div class="checkbox"></div>
+      <div>
+        <h3>Pralines van Leonidas, Lindt of Neuhaus (liefst donkere of melk chocolade)</h3>
+      </div>
+    </div>
 
-  <script>
-    // ---------- CONFIG: set these to your GitHub repo ----------
-    const GITHUB_OWNER = "YOUR_GITHUB_USERNAME";
-    const GITHUB_REPO  = "YOUR_REPO_NAME";
-    const FILE_PATH    = "index.html"; // path inside your repo for which to show the last commit date
-    // ----------------------------------------------------------
+    <div class="item">
+      <div class="checkbox"></div>
+      <div>
+        <h3>Een reep chocolade van Tony's Chocoloney's</h3>
+      </div>
+    </div>
 
-    // Format ISO date to friendly form
-    function formatDate(isoString){
-      try{
-        const d = new Date(isoString);
-        const opts = { year:'numeric', month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' };
-        return d.toLocaleString(undefined, opts);
-      }catch(e){
-        return isoString;
+    <div class="item">
+      <div class="checkbox"></div>
+      <div>
+        <h3>Honing van een imker</h3>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="checkbox"></div>
+      <div>
+        <h3>Cadeaubon voor:</h3>
+        <div class="sublist">
+          <div>• Supra Bazar</div>
+          <div>• <a href="https://www.lush.com/nl/nl/" target="_blank">Lush</a></div>
+          <div>• <a href="https://wondr.care" target="_blank">Wondr</a></div>
+          <div>• Veritas</div>
+          <div>• Kinepolis</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>Warme wintergroetjes 🎄</div>
+    <div style="font-size:12px">Versie: <span id="version">1</span></div>
+  </footer>
+</div>
+
+<script>
+  const GITHUB_OWNER = "AmaaniL";
+  const GITHUB_REPO  = "Wenslijst";
+  const FILE_PATH    = "index.html";
+
+  function formatDate(iso){
+    try{
+      const d = new Date(iso);
+      return d.toLocaleString("nl-NL", { year:'numeric', month:'long', day:'numeric', hour:'2-digit', minute:'2-digit' });
+    }catch(e){return iso;}
+  }
+
+  async function fetchLastCommit(){
+    const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/commits?path=${FILE_PATH}&page=1&per_page=1`;
+    try{
+      const r = await fetch(url);
+      if(!r.ok) throw new Error();
+      const data = await r.json();
+      if(data && data.length){
+        return {source:'git', date:data[0].commit.author.date};
       }
+      return null;
+    } catch(e){ return null; }
+  }
+
+  function fallbackModified(){
+    return {source:'fallback', date:new Date(document.lastModified).toISOString()};
+  }
+
+  async function setDate(){
+    const el = document.getElementById('last-edited');
+    if(GITHUB_OWNER.includes("YOUR_")){
+      el.textContent = "Laatst bewerkt: configureer repo info in script";
+      return;
     }
 
-    // Try GitHub API first (gives last commit for file). Works for public repos.
-    async function fetchLastCommitDate(){
-      // Example endpoint:
-      // GET /repos/{owner}/{repo}/commits?path={path}&page=1&per_page=1
-      const endpoint = `https://api.github.com/repos/${encodeURIComponent(GITHUB_OWNER)}/${encodeURIComponent(GITHUB_REPO)}/commits?path=${encodeURIComponent(FILE_PATH)}&page=1&per_page=1`;
-      try{
-        const resp = await fetch(endpoint, { headers: { 'Accept': 'application/vnd.github.v3+json' }});
-        if(!resp.ok) throw new Error("GitHub API error: " + resp.status);
-        const data = await resp.json();
-        if(Array.isArray(data) && data.length > 0){
-          // commit date path
-          const iso = data[0].commit && data[0].commit.author && data[0].commit.author.date;
-          if(iso) return {source:'git', date:iso};
-        }
-        return null;
-      }catch(err){
-        console.warn("GitHub API failed:", err);
-        return null;
-      }
+    const git = await fetchLastCommit();
+    if(git){
+      el.textContent = "Laatst bewerkt: " + formatDate(git.date);
+      document.getElementById('source-note').textContent = "Bron: Git commit";
+      return;
     }
 
-    // Fallback to document.lastModified
-    function fallbackLastModified(){
-      // document.lastModified returns a string; convert to ISO
-      const s = document.lastModified;
-      if(!s) return null;
-      return {source:'fallback', date: new Date(s).toISOString()};
-    }
+    const fb = fallbackModified();
+    el.textContent = "Laatst bewerkt: " + formatDate(fb.date) + " (fallback)";
+    document.getElementById('source-note').textContent = "Bron: fallback";
+  }
 
-    async function setLastEditedUI(){
-      const el = document.getElementById('last-edited');
-      // if user didn't change config, show instruction
-      if(GITHUB_OWNER === "YOUR_GITHUB_USERNAME" || GITHUB_REPO === "YOUR_REPO_NAME"){
-        el.textContent = "Last edited: configure repo owner & name in the script block.";
-        return;
-      }
+  setDate();
+</script>
 
-      // try GH API
-      const commitInfo = await fetchLastCommitDate();
-      if(commitInfo){
-        el.textContent = "Last edited: " + formatDate(commitInfo.date);
-        document.getElementById('source-note').textContent = "Source: latest Git commit";
-        return;
-      }
-
-      // fallback
-      const fb = fallbackLastModified();
-      if(fb){
-        el.textContent = "Last edited: " + formatDate(fb.date) + " (fallback)";
-        document.getElementById('source-note').textContent = "Source: document.lastModified (fallback)";
-        return;
-      }
-
-      el.textContent = "Last edited: unknown";
-    }
-
-    setLastEditedUI();
-
-    // small helpers
-    function copyLink(){
-      const url = location.href;
-      navigator.clipboard?.writeText(url).then(()=> alert("Link copied!"), ()=> alert("Copy failed; select the address bar and copy manually."));
-    }
-
-    function downloadPDF(){
-      alert("You can print to PDF from your browser (File → Print → Save as PDF).");
-    }
-  </script>
 </body>
 </html>
